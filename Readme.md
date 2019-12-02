@@ -1,7 +1,7 @@
 # Личный проект «Киноман» [![Build status][travis-image]][travis-url]
 
 * Студент: [Дарья Словецких](https://up.htmlacademy.ru/ecmascript/10/user/3612).
-* Наставник: Алексей Белявский.
+* Наставник: [Алексей Белявский](https://htmlacademy.ru/profile/id666435).
 
 ---
 
