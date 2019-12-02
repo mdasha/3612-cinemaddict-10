@@ -257,8 +257,6 @@ const createMostCommentedFilmTwo = () => {
   );
 };
 
-
-
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
@@ -281,11 +279,10 @@ render(filmListContainer, createFilmCardFour(), `beforeend`);
 render(filmListContainer, createFilmCardFive(), `beforeend`);
 render(filmsList, createButtonShowMore(), `beforeend`);
 
-const filmsListExtra = document.querySelectorAll('.films-list--extra .films-list__container');
+const filmsListExtra = document.querySelectorAll(`.films-list--extra .films-list__container`);
 
 render(filmsListExtra[0], createTopRatedFilmOne(), `beforeend`);
 render(filmsListExtra[0], createTopRatedFilmTwo(), `beforeend`);
 
 render(filmsListExtra[1], createMostCommentedFilmOne(), `beforeend`);
 render(filmsListExtra[1], createMostCommentedFilmTwo(), `beforeend`);
-
