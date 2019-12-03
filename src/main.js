@@ -2,7 +2,7 @@
 
 const createProfileName = () => {
   return (
-  `<section class="header__profile profile">
+    `<section class="header__profile profile">
     <p class="profile__rating">Movie Buff</p>
     <img class="profile__avatar" src="images/bitmap@2x.png" alt="Avatar" width="35" height="35">
   </section>`
@@ -11,7 +11,7 @@ const createProfileName = () => {
 
 const createMenuTemplate = () => {
   return (
-  `<nav class="main-navigation">
+    `<nav class="main-navigation">
     <a href="#all" class="main-navigation__item main-navigation__item--active">All movies</a>
     <a href="#watchlist" class="main-navigation__item">Watchlist <span class="main-navigation__item-count">13</span></a>
     <a href="#history" class="main-navigation__item">History <span class="main-navigation__item-count">4</span></a>
@@ -23,7 +23,7 @@ const createMenuTemplate = () => {
 
 const createFilter = () => {
   return (
-  `<ul class="sort">
+    `<ul class="sort">
     <li><a href="#" class="sort__button sort__button--active">Sort by default</a></li>
     <li><a href="#" class="sort__button">Sort by date</a></li>
     <li><a href="#" class="sort__button">Sort by rating</a></li>
@@ -33,7 +33,7 @@ const createFilter = () => {
 
 const createFilmTemplate = () => {
   return (
-  `<section class="films">
+    `<section class="films">
     <section class="films-list">
       <h2 class="films-list__title visually-hidden">All movies. Upcoming</h2>
 
@@ -55,7 +55,7 @@ const createFilmTemplate = () => {
 
 const createFilmCardOne = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">The Dance of Life</h3>
           <p class="film-card__rating">8.3</p>
           <p class="film-card__info">
@@ -77,7 +77,7 @@ const createFilmCardOne = () => {
 
 const createFilmCardTwo = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">Sagebrush Trail</h3>
           <p class="film-card__rating">3.2</p>
           <p class="film-card__info">
@@ -99,7 +99,7 @@ const createFilmCardTwo = () => {
 
 const createFilmCardThree = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">The Man with the Golden Arm</h3>
           <p class="film-card__rating">9.0</p>
           <p class="film-card__info">
@@ -121,7 +121,7 @@ const createFilmCardThree = () => {
 
 const createFilmCardFour = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">Santa Claus Conquers the Martians</h3>
           <p class="film-card__rating">2.3</p>
           <p class="film-card__info">
@@ -143,7 +143,7 @@ const createFilmCardFour = () => {
 
 const createFilmCardFive = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">Popeye the Sailor Meets Sindbad the Sailor</h3>
           <p class="film-card__rating">6.3</p>
           <p class="film-card__info">
@@ -171,7 +171,7 @@ const createButtonShowMore = () => {
 
 const createTopRatedFilmOne = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">The Man with the Golden Arm</h3>
           <p class="film-card__rating">9.0</p>
           <p class="film-card__info">
@@ -193,7 +193,7 @@ const createTopRatedFilmOne = () => {
 
 const createTopRatedFilmTwo = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">The Great Flamarion</h3>
           <p class="film-card__rating">8.9</p>
           <p class="film-card__info">
@@ -215,7 +215,7 @@ const createTopRatedFilmTwo = () => {
 
 const createMostCommentedFilmOne = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">Santa Claus Conquers the Martians</h3>
           <p class="film-card__rating">2.3</p>
           <p class="film-card__info">
@@ -237,7 +237,7 @@ const createMostCommentedFilmOne = () => {
 
 const createMostCommentedFilmTwo = () => {
   return (
-        `<article class="film-card">
+    `<article class="film-card">
           <h3 class="film-card__title">Made for Each Other</h3>
           <p class="film-card__rating">5.8</p>
           <p class="film-card__info">
