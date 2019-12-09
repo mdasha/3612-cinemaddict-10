@@ -6,6 +6,7 @@ import {createFilmCard} from './components/film-card.js';
 import {createButtonShowMore} from './components/button-show-more.js';
 import {createTopRatedFilm} from './components/film-top-rated.js';
 import {createMostCommentedFilm} from './components/film-most-commented.js';
+import {generateMenu} from "./mock/menu.js";
 
 const COUNT_FILMS = 5;
 const COUNT_TOP_RATED = 2;
@@ -18,7 +19,9 @@ const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
 
-render(siteMainElement, createMenuTemplate(), `beforeend`);
+const menu = generateMenu();
+render(siteMainElement, createMenuTemplate(menu), `beforeend`);
+
 render(siteMainElement, createFilter(), `beforeend`);
 render(siteHeaderElement, createProfileName(), `beforeend`);
 render(siteMainElement, createFilmTemplate(), `beforeend`);
