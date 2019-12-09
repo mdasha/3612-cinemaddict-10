@@ -1,7 +1,7 @@
 import {createProfileName} from './components/profile-name.js';
 import {createMenuTemplate} from './components/menu.js';
 import {createFilter} from './components/filter.js';
-import {createFilmTemplate} from './components/films.js';
+import {createFilmsListTemplate} from './components/films-list.js';
 import {createFilmCard} from './components/film-card.js';
 import {createButtonShowMore} from './components/button-show-more.js';
 import {createTopRatedFilm} from './components/film-top-rated.js';
@@ -21,27 +21,27 @@ const render = (container, template, place) => {
 render(siteMainElement, createMenuTemplate(), `beforeend`);
 render(siteMainElement, createFilter(), `beforeend`);
 render(siteHeaderElement, createProfileName(), `beforeend`);
-render(siteMainElement, createFilmTemplate(), `beforeend`);
+render(siteMainElement, createFilmsListTemplate(), `beforeend`);
 
-const filmListContainer = document.querySelector(`.films-list__container`);
-const filmsListExtra = document.querySelectorAll(`.films-list--extra .films-list__container`);
+const filmsListContainerElement = document.querySelector(`.films-list__container`);
+const filmsListExtraElements = document.querySelectorAll(`.films-list--extra .films-list__container`);
 
 new Array(COUNT_FILMS)
   .fill(``)
   .forEach(
-    () => render(filmListContainer, createFilmCard(), `beforeend`)
+      () => render(filmsListContainerElement, createFilmCard(), `beforeend`)
   );
 
-render(filmListContainer, createButtonShowMore(), `beforeend`);
+render(filmsListContainerElement, createButtonShowMore(), `beforeend`);
 
 new Array(COUNT_TOP_RATED)
   .fill(``)
   .forEach(
-    () => render(filmsListExtra[0], createTopRatedFilm(), `beforeend`)
+      () => render(filmsListExtraElements[0], createTopRatedFilm(), `beforeend`)
   );
 
 new Array(COUNT_MOST_COMMENTED)
   .fill(``)
   .forEach(
-    () => render(filmsListExtra[1], createMostCommentedFilm(), `beforeend`)
+      () => render(filmsListExtraElements[1], createMostCommentedFilm(), `beforeend`)
   );
