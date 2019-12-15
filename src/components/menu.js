@@ -9,7 +9,7 @@ const createMenuMarkup = (menuItem, isActive) => {
   );
 };
 
-export const createMenuTemplate = (menuItems) => {
+const createMenuTemplate = (menuItems) => {
   const menuMarkup = menuItems.map((it, i) => createMenuMarkup(it, i === 0)).join(`\n`);
 
   return (
@@ -19,3 +19,5 @@ export const createMenuTemplate = (menuItems) => {
     </nav>`
   );
 };
+
+export {createMenuTemplate};

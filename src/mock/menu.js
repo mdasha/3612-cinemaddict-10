@@ -5,7 +5,7 @@ const generateMenu = () => {
     return {
       name: it,
       count: Math.floor(Math.random() * 10)
-    }
+    };
   });
 };
 
