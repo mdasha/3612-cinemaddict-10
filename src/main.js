@@ -1,8 +1,7 @@
-import {COUNT_TOP_RATED, SHOWING_TASKS_COUNT_ON_START, SHOWING_TASKS_COUNT_BY_BUTTON, COUNT_MOST_COMMENTED, COUNT_FILMS} from './const';
 import {createProfileName} from './components/profile-name.js';
 import {createMenuTemplate} from './components/menu.js';
 import {createFilter} from './components/filter.js';
-import {createFilmTemplate} from './components/films.js';
+import {createFilmsListTemplate} from './components/films-list.js';
 import {createFilmCard} from './components/film-card.js';
 import {createButtonShowMore} from './components/button-show-more.js';
 import {generateMenu} from './mock/menu.js';
@@ -38,8 +37,10 @@ render(siteMainElement, createMenuTemplate(menu), `beforeend`);
 
 render(siteMainElement, createFilter(), `beforeend`);
 render(siteHeaderElement, createProfileName(), `beforeend`);
-render(siteMainElement, createFilmTemplate(), `beforeend`);
+render(siteMainElement, createFilmsListTemplate(), `beforeend`);
 
+const filmsListContainerElement = document.querySelector(`.films-list__container`);
+const filmsListExtraElements = document.querySelectorAll(`.films-list--extra .films-list__container`);
 const filmListContainer = document.querySelector(`.films-list__container`);
 const filmsListExtra = document.querySelectorAll(`.films-list--extra .films-list__container`);
 const filmsList = document.querySelector(`.films-list`);
@@ -70,17 +71,33 @@ mostCommented.slice(0, COUNT_MOST_COMMENTED).forEach((task) => {
   renderDetailedFilms(filmsListExtra[1], task);
 });
 
+new Array(COUNT_FILMS)
+  .fill(``)
+  .forEach(
+      () => render(filmsListContainerElement, createFilmCard(), `beforeend`)
+  );
 showMoreButtonElement.addEventListener(`click`, () => {
   const prevTasksCount = showingTasksCount;
 
+render(filmsListContainerElement, createButtonShowMore(), `beforeend`);
   showingTasksCount = showingTasksCount + SHOWING_TASKS_COUNT_BY_BUTTON;
 
+new Array(COUNT_TOP_RATED)
+  .fill(``)
+  .forEach(
+      () => render(filmsListExtraElements[0], createTopRatedFilm(), `beforeend`)
+  );
   tasks.slice(prevTasksCount, showingTasksCount)
     .forEach((task) => {
       render(filmListContainer, createFilmCard(task), `beforeend`);
       renderDetailedFilms(filmListContainer, task);
     });
 
+new Array(COUNT_MOST_COMMENTED)
+  .fill(``)
+  .forEach(
+      () => render(filmsListExtraElements[1], createMostCommentedFilm(), `beforeend`)
+  );
   if (showingTasksCount >= tasks.length) {
     showMoreButtonElement.remove();
   }
