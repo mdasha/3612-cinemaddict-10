@@ -27,18 +27,20 @@ const renderFilm = (filmListElement, film) => {
   const filmCardTitle = filmCardComponent.getElement().querySelector(`.film-card__title`);
   const filmCardPoster = filmCardComponent.getElement().querySelector(`.film-card__poster`);
   const filmCardComments = filmCardComponent.getElement().querySelector(`.film-card__comments`);
-  const closeFilmCard = filmDetailsComponent.getElement().querySelector(`.film-details__close-btn`);
+
 
   const renderDetailedFilm = (container) => {
     container.addEventListener(`click`, () => {
+      const closeFilmCard = filmDetailsComponent.getElement().querySelector(`.film-details__close-btn`);
+
       render(footerElement, filmDetailsComponent.getElement(), RenderPosition.BEFOREEND);
+
+      closeFilmCard.addEventListener(`click`, () => {
+        filmDetailsComponent.getElement().remove();
+        filmDetailsComponent.removeElement();
+      });
     });
   };
-
-  closeFilmCard.addEventListener(`click`, () => {
-    filmDetailsComponent.getElement().remove();
-    filmDetailsComponent.removeElement();
-  });
 
   renderDetailedFilm(filmCardTitle);
   renderDetailedFilm(filmCardPoster);
