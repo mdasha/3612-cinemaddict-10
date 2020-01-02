@@ -1,5 +1,5 @@
-import {filmsTitles, posters, genres, countries, ages} from "../const.js";
-import {sentences, getRandomIntegerNumber} from "../utils.js";
+import {filmsTitles, posters, genres, countries, ages} from '../const.js';
+import {sentences, getRandomIntegerNumber} from '../utils.js';
 
 const getRandomArrayItem = (array) => {
   const randomIndex = getRandomIntegerNumber(0, array.length);
@@ -57,27 +57,27 @@ const generateFilms = (count) => {
     .map(generateFilm);
 };
 
-const compareRatings = (filmA, filmB) => {
-  const ratingFilmA = filmA.rating;
-  const ratingFilmB = filmB.rating;
+const compareRatings = (previousFilm, nextFilm) => {
+  const previousFilmRating = previousFilm.rating;
+  const nextFilmRating = nextFilm.rating;
 
   let comparison;
-  if (ratingFilmA < ratingFilmB) {
+  if (previousFilmRating < nextFilmRating) {
     comparison = 1;
-  } else if (ratingFilmA > ratingFilmB) {
+  } else if (previousFilmRating > nextFilmRating) {
     comparison = -1;
   }
   return comparison;
 };
 
-const compareCommentsQuantity = (filmA, filmB) => {
-  const commentsFilmA = filmA.comments;
-  const commentsFilmB = filmB.comments;
+const compareCommentsQuantity = (previousFilm, nextFilm) => {
+  const previousFilmComments = previousFilm.comments;
+  const nextFilmComments = nextFilm.comments;
 
   let comparison;
-  if (commentsFilmA < commentsFilmB) {
+  if (previousFilmComments < nextFilmComments) {
     comparison = 1;
-  } else if (commentsFilmA > commentsFilmB) {
+  } else if (previousFilmComments > nextFilmComments) {
     comparison = -1;
   }
   return comparison;

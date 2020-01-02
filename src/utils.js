@@ -8,5 +8,4 @@ const getRandomIntegerNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-
 export {sentences, getRandomIntegerNumber};

@@ -1,4 +1,7 @@
 const COUNT_FILMS = 22;
+const WATCHED_FILMS = 15;
+const HISTORY_FILMS = 12;
+const FAVOURITE_FILMS = 10;
 const COUNT_TOP_RATED = 2;
 const COUNT_MOST_COMMENTED = 2;
 const SHOWING_TASKS_COUNT_ON_START = 5;
@@ -84,4 +87,4 @@ const customerRanks = [
   }
 ];
 
-export {filmsTitles, posters, text, genres, customerRanks, COUNT_FILMS, COUNT_MOST_COMMENTED, COUNT_TOP_RATED, SHOWING_TASKS_COUNT_BY_BUTTON, SHOWING_TASKS_COUNT_ON_START, countries, ages};
+export {filmsTitles, posters, text, genres, customerRanks, COUNT_FILMS, WATCHED_FILMS, HISTORY_FILMS, FAVOURITE_FILMS, COUNT_MOST_COMMENTED, COUNT_TOP_RATED, SHOWING_TASKS_COUNT_BY_BUTTON, SHOWING_TASKS_COUNT_ON_START, countries, ages};
