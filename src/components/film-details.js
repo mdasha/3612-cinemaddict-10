@@ -1,3 +1,5 @@
+import {createElement} from '../utils.js';
+
 const createDescriptionMarkup = (descriptions) => {
   return descriptions
     .map((description) => {
@@ -115,7 +117,7 @@ const createGenresMarkup = (genres) => {
     .join(`\n`);
 };
 
-export const createFilmDetailsTemplate = (film) => {
+const createFilmDetailsTemplate = (film) => {
   const {title, description, poster, date, duration, comments, genres, country, rating, age} = film;
 
   const filmDescription = createDescriptionMarkup(Array.from(description));
@@ -204,3 +206,26 @@ export const createFilmDetailsTemplate = (film) => {
   `
   );
 };
+
+export default class FilmDetails {
+  constructor(film) {
+    this._element = null;
+    this._film = film;
+  }
+
+  getTemplate() {
+    return createFilmDetailsTemplate(this._film);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

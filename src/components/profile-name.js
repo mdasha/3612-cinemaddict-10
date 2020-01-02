@@ -1,5 +1,5 @@
 import {customerRanks} from "../const.js";
-import {getRandomIntegerNumber} from "../utils.js";
+import {getRandomIntegerNumber, createElement} from "../utils.js";
 
 const getCustomerRank = (customerRating) => {
   if (customerRating >= customerRanks[3].rating) {
@@ -24,4 +24,24 @@ const createProfileName = () => {
   );
 };
 
-export {createProfileName};
+export default class ProfileName {
+  constructor() {
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createProfileName();
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
