@@ -1,5 +1,5 @@
 import {filmsTitles, posters, genres, countries, ages} from '../const.js';
-import {sentences, getRandomIntegerNumber} from '../utils.js';
+import {sentences, getRandomIntegerNumber} from '../utils/common.js';
 
 const getRandomArrayItem = (array) => {
   const randomIndex = getRandomIntegerNumber(0, array.length);

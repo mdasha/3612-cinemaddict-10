@@ -1,5 +1,5 @@
 import {COUNT_FILMS} from '../const.js';
-import {createElement} from '../utils.js';
+import AbstractComponent from './abstract-component.js';
 
 const createFooterStatistics = () => {
   return (
@@ -7,24 +7,8 @@ const createFooterStatistics = () => {
   );
 };
 
-export default class FooterStatistics {
-  constructor() {
-    this._element = null;
-  }
-
+export default class FooterStatistics extends AbstractComponent {
   getTemplate() {
     return createFooterStatistics();
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
