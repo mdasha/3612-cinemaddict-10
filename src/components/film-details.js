@@ -118,7 +118,7 @@ const createGenresMarkup = (genres) => {
 };
 
 const createFilmDetailsTemplate = (film) => {
-  const {title, description, poster, date, duration, comments, genres, country, rating, age} = film;
+  const {title, description, poster, day, year, month, duration, comments, genres, country, rating, age} = film;
 
   const filmDescription = createDescriptionMarkup(Array.from(description));
   const commentsMarkup = createCommentsMarkup(comments);
@@ -164,7 +164,7 @@ const createFilmDetailsTemplate = (film) => {
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Release Date</td>
-                <td class="film-details__cell">${date}</td>
+                <td class="film-details__cell">${day}.${month}.${year} </td>
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Runtime</td>
