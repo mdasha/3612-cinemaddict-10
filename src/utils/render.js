@@ -1,16 +1,6 @@
-import {text} from './const';
-
-const sentences = text.split(`.`);
-
 const RenderPosition = {
   AFTERBEGIN: `afterbegin`,
   BEFOREEND: `beforeend`
-};
-
-const getRandomIntegerNumber = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
 };
 
 const createElement = (template) => {
@@ -23,12 +13,19 @@ const createElement = (template) => {
 const render = (container, element, place) => {
   switch (place) {
     case RenderPosition.AFTERBEGIN:
-      container.prepend(element);
+      container.prepend(element.getElement());
       break;
     case RenderPosition.BEFOREEND:
-      container.append(element);
+      container.append(element.getElement());
       break;
   }
 };
 
-export {sentences, RenderPosition, getRandomIntegerNumber, render, createElement};
+const remove = (component) => {
+  component.getElement().remove();
+  component.removeElement();
+};
+
+
+
+export {RenderPosition, render, createElement, remove};
