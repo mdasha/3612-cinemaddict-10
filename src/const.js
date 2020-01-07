@@ -7,6 +7,8 @@ const COUNT_MOST_COMMENTED = 2;
 const SHOWING_TASKS_COUNT_ON_START = 5;
 const SHOWING_TASKS_COUNT_BY_BUTTON = 5;
 
+const RATINGS = [`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`];
+
 const filmsTitles = [
   `Грязные танцы`,
   `Унесенные ветром`,
@@ -87,4 +89,4 @@ const customerRanks = [
   }
 ];
 
-export {filmsTitles, posters, text, genres, customerRanks, COUNT_FILMS, WATCHED_FILMS, HISTORY_FILMS, FAVOURITE_FILMS, COUNT_MOST_COMMENTED, COUNT_TOP_RATED, SHOWING_TASKS_COUNT_BY_BUTTON, SHOWING_TASKS_COUNT_ON_START, countries, ages};
+export {filmsTitles, posters, text, genres, customerRanks, COUNT_FILMS, WATCHED_FILMS, HISTORY_FILMS, FAVOURITE_FILMS, COUNT_MOST_COMMENTED, COUNT_TOP_RATED, SHOWING_TASKS_COUNT_BY_BUTTON, SHOWING_TASKS_COUNT_ON_START, countries, ages, RATINGS};

@@ -23,7 +23,7 @@ const films = generateFilms(COUNT_FILMS);
 const topRated = films.slice().sort(compareRatings);
 const mostCommented = films.slice().sort(compareCommentsQuantity);
 
-const pageController = new PageController(filmsBoard);
+const pageController = new PageController(filmsBoard.getElement());
 pageController.render(films, topRated, mostCommented);
 
 const footerStatistics = document.querySelector(`.footer__statistics`);
