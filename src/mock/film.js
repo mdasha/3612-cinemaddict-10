@@ -50,7 +50,7 @@ const generateFilm = () => {
     genre: Array.from(genresList)[0],
     genres: genresList,
     rating: getRandomFloatNumber(1, 9),
-    yourRating: `9`,
+    yourRating: ``,
     comments: getRandomIntegerNumber(1, 55),
     age: getRandomArrayItem(ages),
     isFavourite: false,

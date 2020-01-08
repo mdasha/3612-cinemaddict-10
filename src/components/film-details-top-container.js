@@ -31,8 +31,8 @@ const createYourRatingMarkup = (yourRating) => {
 };
 
 const createFilmDetailsTopContainerTemplate = (film, options = {}) => {
-  const {title, description, poster, day, year, month, duration, genres, country, rating, age, yourRating, comments} = film;
-  const {isWatched, isFavourite, isAddedToWishList} = options;
+  const {title, description, poster, day, year, month, duration, genres, country, rating, age, comments} = film;
+  const {isWatched, isFavourite, isAddedToWishList, yourRating} = options;
   const filmDescription = createDescriptionMarkup(Array.from(description));
   const genreList = createGenresMarkup(Array.from(genres));
   const yourRatingMarkup = createYourRatingMarkup(yourRating);
@@ -61,7 +61,7 @@ const createFilmDetailsTopContainerTemplate = (film, options = {}) => {
 
                 <div class="film-details__rating">
                  <p class="film-details__total-rating">${rating}</p>
-                    ${isWatched ? ` <p class="film-details__user-rating">Your rate ${yourRating}</p>` : ``}
+                    ${isWatched && yourRating ? ` <p class="film-details__user-rating">Your rate ${yourRating}</p>` : ``}
                 </div>
               </div>
 
@@ -244,9 +244,10 @@ export default class FilmDetailsTopContainer extends AbstractSmartComponent {
     super();
 
     this._film = film;
-    this._isWatched = this._film.isWatched;
-    this._isFavourite = this._film.isFavourite;
-    this._isAddedToWishList = this._film.isAddedToWishList;
+    this._isWatched = film.isWatched;
+    this._isFavourite = film.isFavourite;
+    this._isAddedToWishList = film.isAddedToWishList;
+    this._yourRating = film.yourRating;
     this._submitHandler = null;
 
     this._subscribeOnEvents();
@@ -256,23 +257,14 @@ export default class FilmDetailsTopContainer extends AbstractSmartComponent {
     return createFilmDetailsTopContainerTemplate(this._film, {
       isWatched: this._isWatched,
       isFavourite: this._isFavourite,
-      isAddedToWishList: this._isAddedToWishList
+      isAddedToWishList: this._isAddedToWishList,
+      yourRating: this._yourRating
     });
   }
 
   recoveryListeners() {
     this.setCloseFilmCardHandler(this._submitHandler);
     this._subscribeOnEvents();
-  }
-
-  reset() {
-    const film = this._film;
-
-    this._isWatched = film.isWatched;
-    this._isFavourite = film.isFavourite;
-    this._isAddedToWishList = film.isAddedToWishList;
-
-    this.rerender();
   }
 
   setCloseFilmCardHandler(handler) {
@@ -287,7 +279,9 @@ export default class FilmDetailsTopContainer extends AbstractSmartComponent {
     element.querySelector(`.film-details__control-label--watched`)
       .addEventListener(`click`, () => {
         this._isWatched = !this._isWatched;
-
+        if (this._isWatched === false) {
+          this._yourRating = ``;
+        }
         this.rerender();
       });
 
@@ -304,5 +298,15 @@ export default class FilmDetailsTopContainer extends AbstractSmartComponent {
 
         this.rerender();
       });
+
+    const userRatingScore = element.querySelector(`.film-details__user-rating-score`);
+    if (userRatingScore) {
+      userRatingScore.addEventListener(`change`, (evt) => {
+        this._yourRating = evt.target.value;
+
+
+        this.rerender();
+      });
+    }
   }
 }
