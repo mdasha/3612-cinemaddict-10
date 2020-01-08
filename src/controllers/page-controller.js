@@ -87,6 +87,8 @@ export default class PageController {
     }
 
     this._films = [].concat(this._films.slice(0, index), newData, this._films.slice(index + 1));
+
+    movieController.render(this._films[index]);
   }
 
   _onViewChange() {
@@ -133,8 +135,7 @@ export default class PageController {
     const filmListElement = this._filmsListContainerComponent.getElement();
     filmListElement.innerHTML = ``;
 
-    const newFilms = renderFilms(filmListElement, sortedFilms, this._onDataChange, this._onViewChange);
-    this._showedMovieControllers = newFilms;
+    this._showedMovieControllers = renderFilms(filmListElement, sortedFilms, this._onDataChange, this._onViewChange);
 
     if (sortType === SortType.DEFAULT) {
       this._renderShowMoreButton();
