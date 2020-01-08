@@ -15,7 +15,7 @@ const generateDescription = () => {
 const generateGenres = () => {
   return genres
     .filter(() => Math.random() > 0.5)
-    .slice(0, 3);
+    .slice(0, getRandomIntegerNumber(1, 4));
 };
 
 const getRandomFloatNumber = (min, max) => {
@@ -50,8 +50,13 @@ const generateFilm = () => {
     genre: Array.from(genresList)[0],
     genres: genresList,
     rating: getRandomFloatNumber(1, 9),
+    yourRating: ``,
     comments: getRandomIntegerNumber(1, 55),
-    age: getRandomArrayItem(ages)
+    age: getRandomArrayItem(ages),
+    isFavourite: false,
+    isWatched: false,
+    isAddedToWishList: false,
+    isYourRating: Math.random > 0.5
   };
 };
 

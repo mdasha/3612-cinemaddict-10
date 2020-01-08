@@ -1,4 +1,4 @@
-import AbstractComponent from './abstract-component.js';
+import AbstractSmartComponent from "./abstract-smart-component";
 
 const createDescriptionMarkup = (descriptions) => {
   return descriptions
@@ -34,15 +34,22 @@ const createFilmCard = (film) => {
   );
 };
 
-export default class FilmCard extends AbstractComponent {
+export default class FilmCard extends AbstractSmartComponent {
   constructor(film) {
     super();
 
     this._film = film;
+    this._submitHandler = null;
   }
 
   getTemplate() {
     return createFilmCard(this._film);
+  }
+
+  recoveryListeners() {
+    this.setWatchlistButtonClickHandler(this._submitHandler);
+    this.setMarkAsWatchedButtonClickHandler(this._submitHandler);
+    this.setFavouriteButtonClickHandler(this._submitHandler);
   }
 
   setFilmCardTitleClickHandler(handler) {
@@ -59,4 +66,24 @@ export default class FilmCard extends AbstractComponent {
     this.getElement().querySelector(`.film-card__comments`)
       .addEventListener(`click`, handler);
   }
+
+  setWatchlistButtonClickHandler(handler) {
+    this.getElement().querySelector(`.film-card__controls-item--add-to-watchlist`)
+      .addEventListener(`click`, handler);
+    this._submitHandler = handler;
+  }
+
+  setMarkAsWatchedButtonClickHandler(handler) {
+    this.getElement().querySelector(`.film-card__controls-item--mark-as-watched`)
+      .addEventListener(`click`, handler);
+    this._submitHandler = handler;
+  }
+
+  setFavouriteButtonClickHandler(handler) {
+    this.getElement().querySelector(`.film-card__controls-item--favorite`)
+      .addEventListener(`click`, handler);
+    this._submitHandler = handler;
+  }
+
+
 }
