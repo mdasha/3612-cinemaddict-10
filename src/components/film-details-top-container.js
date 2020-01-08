@@ -1,5 +1,6 @@
 import AbstractSmartComponent from "./abstract-smart-component";
 import {RATINGS} from '../const.js';
+import {formatDating, formatDuration} from "../utils/common";
 
 const createDescriptionMarkup = (descriptions) => {
   return descriptions
@@ -31,8 +32,10 @@ const createYourRatingMarkup = (yourRating) => {
 };
 
 const createFilmDetailsTopContainerTemplate = (film, options = {}) => {
-  const {title, description, poster, day, year, month, duration, genres, country, rating, age, comments} = film;
+  const {title, description, poster, date, durationHours, durationMinutes, genres, country, rating, age, comments} = film;
   const {isWatched, isFavourite, isAddedToWishList, yourRating} = options;
+  formatDuration(durationHours, durationMinutes);
+  const formatDate = formatDating(date);
   const filmDescription = createDescriptionMarkup(Array.from(description));
   const genreList = createGenresMarkup(Array.from(genres));
   const yourRatingMarkup = createYourRatingMarkup(yourRating);
@@ -80,11 +83,11 @@ const createFilmDetailsTopContainerTemplate = (film, options = {}) => {
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Release Date</td>
-                <td class="film-details__cell">${day}.${month}.${year} </td>
+                <td class="film-details__cell">${formatDate} </td>
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Runtime</td>
-                  <td class="film-details__cell">${duration}</td>
+                  <td class="film-details__cell">${formatDuration(durationHours, durationMinutes)}</td>
                 </tr>
                 <tr class="film-details__row">
                   <td class="film-details__term">Country</td>

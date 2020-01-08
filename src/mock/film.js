@@ -32,20 +32,14 @@ const getRandomDate = () => {
 const generateFilm = () => {
 
   const date = getRandomDate();
-  const day = date.getDate();
-  const month = date.getUTCMonth() + 1;
-  const year = date.getFullYear();
-  const duration = ` ${getRandomIntegerNumber(1, 3)}h ${getRandomIntegerNumber(1, 59)}m`;
   const genresList = new Set(generateGenres(genres));
   return {
     title: getRandomArrayItem(filmsTitles),
     description: new Set(generateDescription(sentences)),
     poster: getRandomArrayItem(posters),
     date,
-    day,
-    month,
-    year,
-    duration,
+    durationHours: getRandomIntegerNumber(1, 3),
+    durationMinutes: getRandomIntegerNumber(2, 50),
     country: getRandomArrayItem(countries),
     genre: Array.from(genresList)[0],
     genres: genresList,

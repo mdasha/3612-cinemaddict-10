@@ -1,4 +1,5 @@
 import AbstractSmartComponent from "./abstract-smart-component";
+import {formatYear} from '../utils/common.js';
 
 const createDescriptionMarkup = (descriptions) => {
   return descriptions
@@ -9,7 +10,8 @@ const createDescriptionMarkup = (descriptions) => {
 };
 
 const createFilmCard = (film) => {
-  const {title, description, poster, year, duration, genre, rating, comments} = film;
+  const {title, description, poster, date, duration, genre, rating, comments} = film;
+  const year = formatYear(date);
   const filmDescription = createDescriptionMarkup(Array.from(description));
 
   return (
