@@ -11,7 +11,7 @@ const createDescriptionMarkup = (descriptions) => {
 };
 
 const createFilmCard = (film) => {
-  const {title, description, poster, date, durationHours, durationMinutes, genre, rating, comments} = film;
+  const {title, description, poster, date, durationHours, durationMinutes, genre, rating, commentsCount} = film;
   const year = formatYear(date);
   formatDuration(durationHours, durationMinutes);
   const filmDescription = createDescriptionMarkup(Array.from(description));
@@ -28,7 +28,7 @@ const createFilmCard = (film) => {
       </p>
       <img src="./images/posters/${poster}" alt="" class="film-card__poster">
       <p class="film-card__description">${filmDescription}</p>
-      <a class="film-card__comments">${comments} comments</a>
+      <a class="film-card__comments">${commentsCount} comments</a>
       <form class="film-card__controls">
         <button class="film-card__controls-item button film-card__controls-item--add-to-watchlist">Add to watchlist</button>
         <button class="film-card__controls-item button film-card__controls-item--mark-as-watched">Mark as watched</button>
