@@ -37,6 +37,32 @@ const posters = [
   `the-man-with-the-golden-arm.jpg`
 ];
 
+const textComment = [
+  `Interesting setting and a good cast`,
+  `Booooooooooring`,
+  `Very very old. Meh`,
+  `Almost two hours? Seriously?`,
+  `Полная ерунда`,
+  `Отличный фильм. Посмотрел на одном дыхании`,
+  `Такое себе....Не советую!!!`
+];
+
+const emotions = [
+  `smile.png`,
+  `sleeping.png`,
+  `puke.png`,
+  `angry.png`
+];
+
+const authorComment = [
+  `Tim Macoveev`,
+  `John Doe`,
+  `Daria Slovetskikh`,
+  `Duke Vincent`,
+  `Cherry Lee`,
+  `Margo Teacher`
+];
+
 const text = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquet varius magna,
 non porta ligula feugiat eget. Fusce tristique felis at fermentum pharetra. Aliquam id orci ut lectus varius viverra.
 Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante. Phasellus eros mauris, condimentum sed nibh vitae,
@@ -89,4 +115,11 @@ const customerRanks = [
   }
 ];
 
-export {filmsTitles, posters, text, genres, customerRanks, COUNT_FILMS, WATCHED_FILMS, HISTORY_FILMS, FAVOURITE_FILMS, COUNT_MOST_COMMENTED, COUNT_TOP_RATED, SHOWING_TASKS_COUNT_BY_BUTTON, SHOWING_TASKS_COUNT_ON_START, countries, ages, RATINGS};
+const FilterType = {
+  ALL: `All movies`,
+  WATCHLIST: `Watchlist`,
+  HISTORY: `History`,
+  FAVOURITES: `Favourites`
+};
+
+export {filmsTitles, posters, text, genres, customerRanks, COUNT_FILMS, WATCHED_FILMS, HISTORY_FILMS, FAVOURITE_FILMS, COUNT_MOST_COMMENTED, COUNT_TOP_RATED, SHOWING_TASKS_COUNT_BY_BUTTON, SHOWING_TASKS_COUNT_ON_START, countries, ages, RATINGS, FilterType, textComment, emotions, authorComment};

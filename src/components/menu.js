@@ -1,10 +1,17 @@
 import AbstractComponent from './abstract-component.js';
 
+const FILTER_ID_PREFIX = `filter__`;
+
+const getFilterNameById = (id) => {
+  return id.substring(FILTER_ID_PREFIX.length).replace(`_`, ` `);
+};
+
 const createMenuMarkup = (menuItem, isActive) => {
   const {name, count} = menuItem;
+  const nameWthBlanks = name.replace(` `, `_`);
 
   return (
-    `<a href="#${name}" class="main-navigation__item   ${isActive ? `main-navigation__item--active` : ``}" >
+    `<a href="#${name}" id="filter__${nameWthBlanks}" class="main-navigation__item   ${isActive ? `main-navigation__item--active` : ``}" >
         ${name}
         <span class="main-navigation__item-count">${count}</span>
     </a>`
@@ -12,7 +19,7 @@ const createMenuMarkup = (menuItem, isActive) => {
 };
 
 const createMenuTemplate = (menuItems) => {
-  const menuMarkup = menuItems.map((it, i) => createMenuMarkup(it, i === 0)).join(`\n`);
+  const menuMarkup = menuItems.map((it) => createMenuMarkup(it, it.checked)).join(`\n`);
 
   return (
     `<nav class="main-navigation">
@@ -31,5 +38,12 @@ export default class SiteMenu extends AbstractComponent {
 
   getTemplate() {
     return createMenuTemplate(this._items);
+  }
+
+  setFilterChangeHandler(handler) {
+    this.getElement().addEventListener(`click`, (evt) => {
+      const filterName = getFilterNameById(evt.target.id);
+      handler(filterName);
+    });
   }
 }

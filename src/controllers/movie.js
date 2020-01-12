@@ -28,8 +28,7 @@ export default class MovieController {
     this._filmCardComponent = new FilmCardComponent(film);
     this._filmDetailsTopContainerComponent = new FilmDetailsTopContainerComponent(film);
 
-    const filmDetailsHandler = ((evt) => {
-      evt.preventDefault();
+    const filmDetailsHandler = (() => {
       this._replaceFilmsToFilmDetails();
 
       document.addEventListener(`keydown`, this._onEscKeyDown);
@@ -86,6 +85,7 @@ export default class MovieController {
   }
 
   _replaceFilmDetailsToFilms() {
+    document.removeEventListener(`keydown`, this._onEscKeyDown);
     replace(this._filmCardComponent, this._filmDetailsTopContainerComponent);
     render(this._container, this._filmCardComponent, RenderPosition.BEFOREEND);
 

@@ -1,10 +1,5 @@
 import {filmsTitles, posters, genres, countries, ages} from '../const.js';
-import {sentences, getRandomIntegerNumber} from '../utils/common.js';
-
-const getRandomArrayItem = (array) => {
-  const randomIndex = getRandomIntegerNumber(0, array.length);
-  return array[randomIndex];
-};
+import {sentences, getRandomIntegerNumber, getRandomArrayItem, getRandomDate} from '../utils/common.js';
 
 const generateDescription = () => {
   return sentences
@@ -22,18 +17,12 @@ const getRandomFloatNumber = (min, max) => {
   return (min + (max * Math.random())).toFixed(1);
 };
 
-const getRandomDate = () => {
-  const targetDate = new Date();
-  const diffValue = getRandomIntegerNumber(0, 25);
-  targetDate.setDate(targetDate.getDate() - diffValue);
-  return targetDate;
-};
-
 const generateFilm = () => {
 
   const date = getRandomDate();
   const genresList = new Set(generateGenres(genres));
   return {
+    id: String(new Date() + Math.random()),
     title: getRandomArrayItem(filmsTitles),
     description: new Set(generateDescription(sentences)),
     poster: getRandomArrayItem(posters),
@@ -45,11 +34,11 @@ const generateFilm = () => {
     genres: genresList,
     rating: getRandomFloatNumber(1, 9),
     yourRating: ``,
-    comments: getRandomIntegerNumber(1, 55),
+    commentsCount: getRandomIntegerNumber(1, 10),
     age: getRandomArrayItem(ages),
-    isFavourite: false,
-    isWatched: false,
-    isAddedToWishList: false,
+    isFavourite: getRandomIntegerNumber(0, 2),
+    isWatched: getRandomIntegerNumber(0, 2),
+    isAddedToWishList: getRandomIntegerNumber(0, 2),
     isYourRating: Math.random > 0.5
   };
 };

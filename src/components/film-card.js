@@ -1,5 +1,6 @@
 import AbstractSmartComponent from "./abstract-smart-component";
 import {formatYear} from '../utils/common.js';
+import {formatDuration} from "../utils/common";
 
 const createDescriptionMarkup = (descriptions) => {
   return descriptions
@@ -10,8 +11,9 @@ const createDescriptionMarkup = (descriptions) => {
 };
 
 const createFilmCard = (film) => {
-  const {title, description, poster, date, duration, genre, rating, comments} = film;
+  const {title, description, poster, date, durationHours, durationMinutes, genre, rating, comments} = film;
   const year = formatYear(date);
+  formatDuration(durationHours, durationMinutes);
   const filmDescription = createDescriptionMarkup(Array.from(description));
 
   return (
@@ -21,7 +23,7 @@ const createFilmCard = (film) => {
       <p class="film-card__rating">${rating}</p>
       <p class="film-card__info">
         <span class="film-card__year">${year}</span>
-        <span class="film-card__duration">${duration}</span>
+        <span class="film-card__duration">${formatDuration(durationHours, durationMinutes)}</span>
         <span class="film-card__genre">${genre}</span>
       </p>
       <img src="./images/posters/${poster}" alt="" class="film-card__poster">
@@ -86,6 +88,4 @@ export default class FilmCard extends AbstractSmartComponent {
       .addEventListener(`click`, handler);
     this._submitHandler = handler;
   }
-
-
 }
